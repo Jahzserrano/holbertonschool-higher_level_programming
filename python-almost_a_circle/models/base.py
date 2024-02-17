@@ -39,7 +39,7 @@ class Base:
     
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write the JSON serialization of a list of objects to a file.
+        """JSON serialization of a list of objects to a file.
 
         Args:
             list_objs (list): A list of inherited Base instances.
@@ -52,4 +52,17 @@ class Base:
                 list_dicts = [o.to_dictionary() for o in list_objs]
                 jsonfile.write(Base.to_json_string(list_dicts))
     
+    @staticmethod
+    def from_json_string(json_string):
+        """deserialization of a JSON string.
+
+        Args:
+            json_string (str): A JSON str representation
+        Returns:
+            If json_string is None or empty - an empty list.
+            Otherwise - the Python list represented by json_string.
+        """
+        if json_string is None or json_string == "[]":
+            return []
+        return json.loads(json_string)
     
