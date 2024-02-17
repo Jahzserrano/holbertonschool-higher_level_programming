@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # Jahaizel Adans Serrano
+import unittest
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class TestRectangleClass(unittest.TestCase):
