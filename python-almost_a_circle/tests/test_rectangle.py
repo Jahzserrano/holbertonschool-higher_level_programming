@@ -93,3 +93,4 @@ class TestRectangleClass(unittest.TestCase):
         r.y = 10
         self.assertEqual(10, r.y)
     
+    
