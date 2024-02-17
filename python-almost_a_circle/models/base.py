@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # Jahaziel Adans Serrano
 """ Defines a base model class"""
-
+import jsn
 
 class Base:
     """Base Model
