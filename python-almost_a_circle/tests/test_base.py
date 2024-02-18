@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-# Jahazuel Adans Serrano
-"""Defines unittests for base"""
+"""Defines unittests for base.py."""
 import os
 import unittest
 from models.base import Base
@@ -8,8 +7,8 @@ from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestBaseClass(unittest.TestCase):
-    """Unittests for the Base class."""
+class TestBase_instantiation(unittest.TestCase):
+    """Unittests for testing instantiation of the Base class."""
 
     def test_no_arg(self):
         b1 = Base()
@@ -94,6 +93,10 @@ class TestBaseClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base(1, 2)
 
+
+class TestBase_to_json_string(unittest.TestCase):
+    """Unittests for testing to_json_string method of Base class."""
+
     def test_to_json_string_rectangle_type(self):
         r = Rectangle(10, 7, 2, 8, 6)
         self.assertEqual(str, type(Base.to_json_string([r.to_dictionary()])))
@@ -135,6 +138,10 @@ class TestBaseClass(unittest.TestCase):
     def test_to_json_string_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.to_json_string([], 1)
+
+
+class TestBase_save_to_file(unittest.TestCase):
+    """Unittests for testing save_to_file method of Base class."""
 
     @classmethod
     def tearDown(self):
@@ -210,6 +217,10 @@ class TestBaseClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
 
+
+class TestBase_from_json_string(unittest.TestCase):
+    """Unittests for testing from_json_string method of Base class."""
+
     def test_from_json_string_type(self):
         list_input = [{"id": 89, "width": 10, "height": 4}]
         json_list_input = Rectangle.to_json_string(list_input)
@@ -260,6 +271,10 @@ class TestBaseClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.from_json_string([], 1)
 
+
+class TestBase_create(unittest.TestCase):
+    """Unittests for testing create method of Base class."""
+
     def test_create_rectangle_original(self):
         r1 = Rectangle(3, 5, 1, 2, 7)
         r1_dictionary = r1.to_dictionary()
@@ -307,6 +322,10 @@ class TestBaseClass(unittest.TestCase):
         s1_dictionary = s1.to_dictionary()
         s2 = Square.create(**s1_dictionary)
         self.assertNotEqual(s1, s2)
+
+
+class TestBase_load_from_file(unittest.TestCase):
+    """Unittests for testing load_from_file_method of Base class."""
 
     @classmethod
     def tearDown(self):
@@ -369,6 +388,10 @@ class TestBaseClass(unittest.TestCase):
     def test_load_from_file_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
+
+
+class TestBase_save_to_file_csv(unittest.TestCase):
+    """Unittests for testing save_to_file_csv method of Base class."""
 
     @classmethod
     def tearDown(self):
@@ -443,6 +466,10 @@ class TestBaseClass(unittest.TestCase):
     def test_save_to_file_csv_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Square.save_to_file_csv([], 1)
+
+
+class TestBase_load_from_file_csv(unittest.TestCase):
+    """Unittests for testing load_from_file_csv method of Base class."""
 
     @classmethod
     def tearDown(self):
