@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-# Jahaziel Adans Serrano
 """Defines a base model class."""
 import json
-import csv
-import turtle
 
 
 class Base:
@@ -19,7 +16,7 @@ class Base:
         """Initialize a new Base.
 
         Args:
-            id (int): The id of the Base.
+            id (int): The Id of the base.
         """
         if id is not None:
             self.id = id
@@ -61,7 +58,7 @@ class Base:
             json_string (str): A JSON str representation of a list of dicts.
         Returns:
             If json_string is None or empty - an empty list.
-            else - the Python list represented by json_string.
+            Otherwise - the Python list represented by json_string.
         """
         if json_string is None or json_string == "[]":
             return []
@@ -72,7 +69,7 @@ class Base:
         """Return a class instantied from a dictionary of attributes.
 
         Args:
-            **dictionary (dict): Key-value pairs of attributes to initialize.
+            **dictionary (dict): Key/value pairs of attributes to initialize.
         """
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
@@ -88,7 +85,7 @@ class Base:
 
         Returns:
             If the file does not exist - an empty list.
-            else - a list of instantiated classes.
+            Otherwise - a list of instantiated classes.
         """
         filename = str(cls.__name__) + ".json"
         try:
